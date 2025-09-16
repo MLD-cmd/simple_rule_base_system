@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simple Rule Base System</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="main-wrapper">
+        <!-- Left: Input and recommendation -->
+        <div class="container">
+            <h1 style="text-align: center;">Movie Mood Matcher</h1>
+            <form method="POST">
+                <label for="mood">Select your Mood:</label>
+                <input type="text" id="mood" name="mood" placeholder="Enter your mood" {% if recommendation %}readonly{% endif %}>
+
+                <label for="genre">Select your Genre:</label>
+                <input type="text" id="genre" name="genre" placeholder="Enter the genre" {% if recommendation %}readonly{% endif %}>
+
+                <button type="submit" name="action" value="recommend" {% if recommendation %}disabled{% endif %}>Match</button>
+                <button type="submit" name="action" value="clear">Clear</button>
+            </form>
+
+            {% if recommendation %}
+                <div class="result">
+                    <h2 style="text-align: center;">{{ recommendation }}</h2>
+                </div>
+            {% endif %}
+        </div>
+
+        <!-- Right: Movie list -->
+        <div class="movie-list">
+            <h2 style="text-align: center;">🎬 All Movies by Genre:</h2>
+        
+            <h3>😂 Comedy</h3>
+            <ul>
+                <li>Friends 1994 (Mood: Happy)</li>
+                <li>How I Met Your Mother 2005 (Mood: Romantic)</li>
+            </ul>
+        
+            <h3>💣 Action</h3>
+            <ul>
+                <li>Avengers: Endgame 2019 (Mood: Adventurous)</li>
+                <li>Guardians of the Galaxy 2014 (Mood: Happy)</li>
+            </ul>
+        
+            <h3>🌹 Romance</h3>
+            <ul>
+                <li>The Notebook 2004 (Mood: Romantic)</li>
+                <li>Titanic 1997 (Mood: Sad)</li>
+            </ul>
+        
+            <h3>🎭 Drama</h3>
+            <ul>
+                <li>The Pursuit of Happyness 2006 (Mood: Sad)</li>
+            </ul>
+        
+            <h3>🧙‍♂️ Fantasy</h3>
+            <ul>
+                <li>Jumanji: Welcome to the Jungle 2017 (Mood: Adventurous)</li>
+            </ul>
+        
+            <h3>🫆 Mystery</h3>
+            <ul>
+                <li>13 Reasons Why 2017 (Mood: Angry)</li>
+            </ul>
+        
+            <h3>🚀 Sci-Fi</h3>
+            <ul>
+                <li>Interstellar 2014 (Mood: Adventurous)</li>
+            </ul>
+            <h3>🧟‍♂️ Horror</h3>
+            <ul>
+                <li>The Watcher 2022 (Mood: Eerie)</li>
+            </ul>
+        </div>
+</body>
+</html>
